@@ -104,10 +104,8 @@ If you'd like to upload the media to S3 when you're done, optionally use the
 `UploadToS3` func.
 
 ```go
-err := creds.UploadToS3(photos, gphotos.S3Options{
-    Bucket: "my bucket name",
-    // other options you want to set
-})
+s3options := gphotos.NewS3Options(bucketName)
+err := creds.UploadToS3(photos, s3options)
 ```
 
 ## Utility: `auth`

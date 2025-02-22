@@ -63,10 +63,9 @@ func main() {
 	}
 	fmt.Printf("%d total items, now uploading to S3\n", len(photos))
 
-	err = creds.UploadToS3(photos, gphotos.S3Options{
-		Bucket: args.Bucket,
-		Width:  2048,
-	})
+	s3opts := gphotos.NewS3Options(args.Bucket)
+	s3opts.Width = 2048
+	err = creds.UploadToS3(photos, s3opts)
 	if err != nil {
 		panic(err)
 	}

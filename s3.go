@@ -16,18 +16,18 @@ import (
 type S3Options struct {
 	Bucket        string // Required. s3 bucket to upload content.
 	PhotosJSONKey string // s3 key for a json dump of all the photos info, default to `photos.json`
-	PhotosPrefix  string // s3 key prefix for where to put the photos, defaults to `photos/`
+	PhotosPrefix  string // s3 key prefix for where to put the photos without the trailing slash, defaults to `photos`
 	Width         int    // width of the image to request from Google Photos. If not provided, gets full width
 	Height        int    // height of the image to request from Google Photos. If not provided, gets full height
 	AddExtension  bool   // add the extension of the file onto the s3 key. Defaults to false, uploading by Google Photos ID
 }
 
-func (o *S3Options) setDefaults() {
-	if o.PhotosJSONKey == "" {
-		o.PhotosJSONKey = "photos.json"
-	}
-	if o.PhotosPrefix == "" {
-		o.PhotosPrefix = "photos/"
+// NewS3Options creates a new S3Options object with defaults
+func NewS3Options(bucket string) S3Options {
+	return S3Options{
+		Bucket:        bucket,
+		PhotosJSONKey: "photos.json",
+		PhotosPrefix:  "photos",
 	}
 }
 
