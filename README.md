@@ -6,7 +6,7 @@ ability to copy media from Google Photos to S3.
 ## Install
 
 ```sh
-go get github.com/spf13/viper
+go get github.com/polastre/gphotos
 ```
 
 Requires go 1.24.0 or higher.
