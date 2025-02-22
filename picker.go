@@ -231,7 +231,6 @@ func (s *GooglePhotosPickerSession) listPickerContents() ([]GooglePhotosPickedIt
 //   - AWS_SECRET_ACCESS_KEY
 //   - AWS_REGION
 func (c *Credentials) UploadToS3(photos []GooglePhotosPickedItem, opts S3Options) error {
-	opts.setDefaults()
 	token, err := c.Token()
 	if err != nil {
 		return err
@@ -241,10 +240,10 @@ func (c *Credentials) UploadToS3(photos []GooglePhotosPickedItem, opts S3Options
 			return err
 		}
 	}
-	return opts.setPhotoJSON(photos)
+	return opts.SetPhotoJSON(photos)
 }
 
-func (opts S3Options) setPhotoJSON(photos []GooglePhotosPickedItem) error {
+func (opts S3Options) SetPhotoJSON(photos []GooglePhotosPickedItem) error {
 	return SetS3Key(opts.Bucket, opts.PhotosJSONKey, photos)
 }
 

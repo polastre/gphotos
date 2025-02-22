@@ -22,12 +22,12 @@ type S3Options struct {
 	AddExtension  bool   // add the extension of the file onto the s3 key. Defaults to false, uploading by Google Photos ID
 }
 
-func (o *S3Options) setDefaults() {
-	if o.PhotosJSONKey == "" {
-		o.PhotosJSONKey = "photos.json"
-	}
-	if o.PhotosPrefix == "" {
-		o.PhotosPrefix = "photos/"
+// NewS3Options creates a new S3Options object with defaults
+func NewS3Options(bucket string) S3Options {
+	return S3Options{
+		Bucket:        bucket,
+		PhotosJSONKey: "photos.json",
+		PhotosPrefix:  "photos/",
 	}
 }
 
@@ -83,6 +83,5 @@ func SetS3Key[T any](bucket string, filename string, photos []T) error {
 
 // PhotoJSON returns the photos metadata json file stored in S3
 func (o S3Options) PhotoJSON() ([]GooglePhotosPickedItem, error) {
-	o.setDefaults()
 	return S3Key[GooglePhotosPickedItem](o.Bucket, o.PhotosJSONKey)
 }
