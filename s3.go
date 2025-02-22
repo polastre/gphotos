@@ -83,5 +83,6 @@ func SetS3Key[T any](bucket string, filename string, photos []T) error {
 
 // PhotoJSON returns the photos metadata json file stored in S3
 func (o S3Options) PhotoJSON() ([]GooglePhotosPickedItem, error) {
+	o.setDefaults()
 	return S3Key[GooglePhotosPickedItem](o.Bucket, o.PhotosJSONKey)
 }
