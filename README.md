@@ -1,5 +1,7 @@
 # gphotos
-Golang Google Photos library and cli for copying photos to S3.
+
+Golang Google Photos package and cli utilizing the Picker API. Includes the
+ability to copy media from Google Photos to S3.
 
 ## Install
 
@@ -30,10 +32,11 @@ integrate with photos.
 Apps now have two ways of interacting via the API:
 
 1. Media and albums created by the app itself can be accessed through the normal
-   Library API. If the app is something like a photo frame, it is highly
-   unlikely your app created the album AND the media inside it. Even moving
-   photos to an album created by your app doesn't allow your app to see them
-   because the photos themselves weren't uploaded by your app.
+   Library API. If the app is something like a photo frame or media backup
+   utility, it is highly unlikely your app created the album AND the media
+   inside it. Even moving photos to an album created by your app doesn't allow
+   your app to see them because the photos themselves weren't uploaded by your
+   app.
 2. Apps can redirect users to a "Media Picker" at Google Photos by creating a
    "picker session" for that user. After the user picks their media to share
    with the app, the app has access to those media items via the Picker API
