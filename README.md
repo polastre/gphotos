@@ -1,5 +1,7 @@
 # gphotos
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/polastre/gphotos.svg)](https://pkg.go.dev/github.com/polastre/gphotos)
+
 Golang Google Photos package and cli utilizing the Picker API. Includes the
 ability to copy media from Google Photos to S3.
 
